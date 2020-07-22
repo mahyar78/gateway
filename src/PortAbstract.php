@@ -403,7 +403,12 @@ abstract class PortAbstract {
             '?' . http_build_query($query_array);
     }
 
-    public function setUser($user)
+
+    /**
+     * Set the user to get related configs from database
+     * @param $user
+     */
+    public function forUser($user)
     {
         $this->user = $user;
     }
