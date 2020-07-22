@@ -157,8 +157,8 @@ class GatewayResolver
             throw new PortNotFoundException;
 
         $this->port = $port;
-        $this->port->setConfig($this->config); // injects config
-        $this->port->setPortName($name); // injects config
+        $this->port->setConfigs($this->port->getConfigNames()); // injects config
+        $this->port->setPortName($name);
         $this->port->boot();
 
         return $this;
