@@ -203,9 +203,9 @@ class Mellat extends PortAbstract implements PortInterface
 	protected function settleRequest()
 	{
 		$fields = array(
-			'terminalId' => $this->config->get('gateway.mellat.terminalId'),
-			'userName' => $this->config->get('gateway.mellat.username'),
-			'userPassword' => $this->config->get('gateway.mellat.password'),
+			'terminalId' => $this->config->get('mellat_terminalId'),
+			'userName' => $this->config->get('mellat_username'),
+			'userPassword' => $this->config->get('mellat_password'),
 			'orderId' => $this->transactionId(),
 			'saleOrderId' => $this->transactionId(),
 			'saleReferenceId' => $this->trackingCode
@@ -230,5 +230,15 @@ class Mellat extends PortAbstract implements PortInterface
 		$this->transactionFailed();
 		$this->newLog($response->return, MellatException::$errors[$response->return]);
 		throw new MellatException($response->return);
+	}
+
+
+    public function getConfigNames()
+    {
+        return [
+            'mellat_terminalId',
+            'mellat_username',
+            'mellat_password'
+        ];
 	}
 }
