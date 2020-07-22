@@ -429,7 +429,7 @@ abstract class PortAbstract {
             ->table('gateway_configs')
             ->whereIn('name', $configs)
             ->where('user_id', $this->user->id)
-            ->get()
+            ->pluck('value', 'name')
             ->toArray();
 
         foreach ($userConfigs as $configName => $configValue) {
